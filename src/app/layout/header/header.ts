@@ -4,11 +4,12 @@ import {
   NavigationEnd,
   Router,
 } from '@angular/router';
+import { LucideBell } from '@lucide/angular';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [LucideBell],
   styleUrl: './header.scss',
   templateUrl: './header.html',
 })

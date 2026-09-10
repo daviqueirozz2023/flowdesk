@@ -1,0 +1,28 @@
+.clients {
+  width: 100%;
+}
+
+.clients__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+}
+
+.clients__title {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.clients__description {
+  margin: var(--spacing-2) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+}

@@ -21,7 +21,13 @@
                 routerLinkActive="sidebar__menu-button--active"
                 ariaCurrentWhenActive="page"
             >
-                <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+                <svg
+                  lucideLayoutDashboard
+                  class="sidebar__menu-icon"
+                  [size]="20"
+                  [strokeWidth]="1.8"
+                  aria-hidden="true"
+                ></svg>
                 <span>Dashboard</span>
             </a>
         </li>
@@ -33,30 +39,68 @@
                 routerLinkActive="sidebar__menu-button--active"
                 ariaCurrentWhenActive="page"
             >
-                <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+                <svg
+                  lucideFolderKanban
+                  class="sidebar__menu-icon"
+                  [size]="20"
+                  [strokeWidth]="1.8"
+                  aria-hidden="true"
+                ></svg>
                 <span>Projetos</span>
             </a>
         </li>
 
       <li class="sidebar__menu-item">
-        <button class="sidebar__menu-button" type="button">
-          <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+        <a class="sidebar__menu-button"
+          routerLink="/clients"
+          routerLinkActive="sidebar__menu-button--active"
+          ariaCurrentWhenActive="page"
+        >
+          <svg
+            lucideUsers
+            class="sidebar__menu-icon"
+            [size]="20"
+            [strokeWidth]="1.8"
+            aria-hidden="true"
+          ></svg>
           <span>Clientes</span>
-        </button>
+        </a>
       </li>
 
       <li class="sidebar__menu-item">
-        <button class="sidebar__menu-button" type="button">
-          <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+        <a
+          class="sidebar__menu-button"
+          routerLink="/tasks"
+          routerLinkActive="sidebar__menu-button--active"
+          ariaCurrentWhenActive="page"
+        >
+          <svg
+            lucideListTodo
+            class="sidebar__menu-icon"
+            [size]="20"
+            [strokeWidth]="1.8"
+            aria-hidden="true"
+          ></svg>
           <span>Tarefas</span>
-        </button>
+        </a>
       </li>
 
       <li class="sidebar__menu-item">
-        <button class="sidebar__menu-button" type="button">
-          <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+        <a
+          class="sidebar__menu-button"
+          routerLink="/team"
+          routerLinkActive="sidebar__menu-button--active"
+          ariaCurrentWhenActive="page"
+        >
+          <svg
+            lucideUserRound
+            class="sidebar__menu-icon"
+            [size]="20"
+            [strokeWidth]="1.8"
+            aria-hidden="true"
+          ></svg>
           <span>Equipe</span>
-        </button>
+        </a>
       </li>
     </ul>
   </nav>
@@ -64,9 +108,20 @@
   <div class="sidebar__footer">
     <span class="sidebar__section-title">Sistema</span>
 
-    <button class="sidebar__menu-button" type="button">
-      <span class="sidebar__menu-icon" aria-hidden="true">●</span>
+    <a
+      class="sidebar__menu-button"
+      routerLink="/settings"
+      routerLinkActive="sidebar__menu-button--active"
+      ariaCurrentWhenActive="page"
+    >
+      <svg
+        lucideSettings
+        class="sidebar__menu-icon"
+        [size]="20"
+        [strokeWidth]="1.8"
+        aria-hidden="true"
+      ></svg>
       <span>Configurações</span>
-    </button>
+    </a>
   </div>
 </aside>
