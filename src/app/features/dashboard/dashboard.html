@@ -8,4 +8,169 @@
       </p>
     </div>
   </header>
+
+    <div class="dashboard__metrics">
+      @if (metrics$ | async; as metrics) {
+      @for (metric of metrics; track metric.label) {
+        <article class="metric-card">
+          <div class="metric-card__top">
+            <div class="metric-card__icon">
+              @switch (metric.icon) {
+                @case ('projects') {
+                  <svg
+                    lucideBriefcaseBusiness
+                    [size]="20"
+                    [strokeWidth]="1.8"
+                    aria-hidden="true"
+                  ></svg>
+                }
+
+                @case ('completed') {
+                  <svg
+                    lucideCheckCircle2
+                    [size]="20"
+                    [strokeWidth]="1.8"
+                    aria-hidden="true"
+                  ></svg>
+                }
+
+                @case ('tasks') {
+                  <svg
+                    lucideClock3
+                    [size]="20"
+                    [strokeWidth]="1.8"
+                    aria-hidden="true"
+                  ></svg>
+                }
+
+                @case ('clients') {
+                  <svg
+                    lucideUsers
+                    [size]="20"
+                    [strokeWidth]="1.8"
+                    aria-hidden="true"
+                  ></svg>
+                }
+              }
+            </div>
+
+            <span
+              class="metric-card__trend"
+              [class.metric-card__trend--positive]="metric.trendType === 'positive'"
+              [class.metric-card__trend--warning]="metric.trendType === 'warning'"
+            >
+              {{ metric.trend }}
+            </span>
+          </div>
+
+          <span class="metric-card__label">
+            {{ metric.label }}
+          </span>
+
+          <strong class="metric-card__value">
+            {{ metric.value }}
+          </strong>
+
+          <span class="metric-card__helper">
+            {{ metric.helper }}
+          </span>
+        </article>
+        }
+        } @else {
+          @for (item of [1, 2, 3, 4]; track item) {
+            <article class="metric-card metric-card--loading">
+              <div class="skeleton skeleton--icon"></div>
+              <div class="skeleton skeleton--text"></div>
+              <div class="skeleton skeleton--value"></div>
+              <div class="skeleton skeleton--small"></div>
+            </article>
+      }
+      }
+    </div>
+  <div class="dashboard__grid">
+  <section class="dashboard-panel">
+    <div class="dashboard-panel__header">
+      <div>
+        <h3 class="dashboard-panel__title">Próximos prazos</h3>
+        <p class="dashboard-panel__description">
+          Entregas e atividades que precisam de atenção.
+        </p>
+      </div>
+    </div>
+
+    <div class="deadline-list">
+      @if (deadlines$ | async; as deadlines) {
+        @for (deadline of deadlines; track deadline.title) {
+          <article class="deadline-item">
+            <div class="deadline-item__date">
+              <strong>{{ deadline.day }}</strong>
+              <span>{{ deadline.month }}</span>
+            </div>
+
+            <div class="deadline-item__content">
+              <strong class="deadline-item__title">
+                {{ deadline.title }}
+              </strong>
+
+              <span class="deadline-item__meta">
+                {{ deadline.project }}
+              </span>
+            </div>
+
+            <span
+              class="deadline-item__status"
+              [class.deadline-item__status--urgent]="deadline.statusType === 'urgent'"
+            >
+              {{ deadline.status }}
+            </span>
+          </article>
+        }
+      } @else {
+        @for (item of [1, 2, 3]; track item) {
+          <article class="deadline-item deadline-item--loading">
+            <div class="skeleton skeleton--deadline-date"></div>
+
+            <div class="deadline-item__content">
+              <div class="skeleton skeleton--deadline-title"></div>
+              <div class="skeleton skeleton--deadline-meta"></div>
+            </div>
+
+            <div class="skeleton skeleton--deadline-status"></div>
+          </article>
+        }
+      }
+    </div>
+  </section>
+
+  <section class="dashboard-panel">
+    <div class="dashboard-panel__header">
+      <div>
+        <h3 class="dashboard-panel__title">Resumo de tarefas</h3>
+        <p class="dashboard-panel__description">
+          Distribuição atual das atividades da equipe.
+        </p>
+      </div>
+    </div>
+
+    <div class="task-summary">
+      @if (taskSummary$ | async; as taskSummary) {
+      @for (task of taskSummary; track task.label) {
+        <div class="task-summary__item">
+          <div class="task-summary__info">
+            <span>{{ task.label }}</span>
+            <strong>{{ task.value }}</strong>
+          </div>
+
+          <div class="task-summary__bar">
+            <span
+              class="task-summary__progress"
+              [style.width.%]="task.progress"
+            ></span>
+          </div>
+        </div>
+      }
+      }
+    </div>
+  </section>
+</div>
 </section>

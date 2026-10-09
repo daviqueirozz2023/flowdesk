@@ -26,3 +26,396 @@
 
   font-size: 14px;
 }
+
+.dashboard__metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-4);
+
+  margin-top: var(--spacing-8);
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  padding: var(--spacing-5);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-card__label {
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.metric-card__value {
+  margin-top: var(--spacing-2);
+
+  color: var(--color-text-primary);
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.metric-card__helper {
+  margin-top: var(--spacing-2);
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard__metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: var(--spacing-4);
+}
+
+.metric-card__icon {
+  display: grid;
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.metric-card__trend {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 24px;
+  padding: 0 var(--spacing-2);
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.metric-card__trend--positive {
+  background: #ecfdf3;
+  color: var(--color-success);
+}
+
+.metric-card__trend--warning {
+  background: #fff7ed;
+  color: var(--color-warning);
+}
+
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
+  gap: var(--spacing-4);
+
+  margin-top: var(--spacing-4);
+}
+
+.dashboard-panel {
+  padding: var(--spacing-5);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-panel__header {
+  margin-bottom: var(--spacing-5);
+}
+
+.dashboard-panel__title {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dashboard-panel__description {
+  margin: var(--spacing-1) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+}
+
+.deadline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+
+  padding: var(--spacing-4) 0;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.deadline-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.deadline-item:last-child {
+  padding-bottom: 0;
+}
+
+.deadline-item__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+}
+
+.deadline-item__date strong {
+  color: var(--color-text-primary);
+
+  font-size: 16px;
+  line-height: 1;
+}
+
+.deadline-item__date span {
+  margin-top: 4px;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.deadline-item__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.deadline-item__title {
+  color: var(--color-text-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.deadline-item__meta {
+  margin-top: 4px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 12px;
+}
+
+.deadline-item__status {
+  flex-shrink: 0;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.deadline-item__status--urgent {
+  background: #fef2f2;
+  color: var(--color-danger);
+}
+
+.task-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.task-summary__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.task-summary__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+}
+
+.task-summary__info strong {
+  color: var(--color-text-primary);
+}
+
+.task-summary__bar {
+  overflow: hidden;
+
+  width: 100%;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background: var(--color-background);
+}
+
+.task-summary__progress {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .deadline-item {
+    align-items: flex-start;
+  }
+
+  .deadline-item__status {
+    display: none;
+  }
+}
+
+.metric-card--loading {
+  gap: var(--spacing-3);
+}
+
+.skeleton {
+  border-radius: var(--radius-sm);
+
+  background: linear-gradient(
+    90deg,
+    #eef0f4 25%,
+    #f7f8fa 50%,
+    #eef0f4 75%
+  );
+
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s infinite;
+}
+
+.skeleton--icon {
+  width: 40px;
+  height: 40px;
+}
+
+.skeleton--text {
+  width: 55%;
+  height: 14px;
+}
+
+.skeleton--value {
+  width: 25%;
+  height: 32px;
+}
+
+.skeleton--small {
+  width: 40%;
+  height: 12px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.deadline-item--loading {
+  min-height: 72px;
+}
+
+.skeleton--deadline-date {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.skeleton--deadline-title {
+  width: 45%;
+  height: 14px;
+}
+
+.skeleton--deadline-meta {
+  width: 30%;
+  height: 12px;
+  margin-top: var(--spacing-2);
+}
+
+.skeleton--deadline-status {
+  width: 64px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 999px;
+}
+
+.skeleton--task-label {
+  width: 90px;
+  height: 13px;
+}
+
+.skeleton--task-value {
+  width: 24px;
+  height: 13px;
+}
+
+.skeleton--task-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+}
