@@ -154,21 +154,32 @@
 
     <div class="task-summary">
       @if (taskSummary$ | async; as taskSummary) {
-      @for (task of taskSummary; track task.label) {
-        <div class="task-summary__item">
-          <div class="task-summary__info">
-            <span>{{ task.label }}</span>
-            <strong>{{ task.value }}</strong>
-          </div>
+        @for (task of taskSummary; track task.label) {
+          <div class="task-summary__item">
+            <div class="task-summary__info">
+              <span>{{ task.label }}</span>
+              <strong>{{ task.value }}</strong>
+            </div>
 
-          <div class="task-summary__bar">
-            <span
-              class="task-summary__progress"
-              [style.width.%]="task.progress"
-            ></span>
+            <div class="task-summary__bar">
+              <span
+                class="task-summary__progress"
+                [style.width.%]="task.progress"
+              ></span>
+            </div>
           </div>
-        </div>
-      }
+        }
+      } @else {
+        @for (item of [1, 2, 3]; track item) {
+          <div class="task-summary__item">
+            <div class="task-summary__info">
+              <div class="skeleton skeleton--task-label"></div>
+              <div class="skeleton skeleton--task-value"></div>
+            </div>
+
+            <div class="skeleton skeleton--task-bar"></div>
+          </div>
+        }
       }
     </div>
   </section>
