@@ -2,10 +2,82 @@
   <header class="projects__header">
     <div>
       <h2 class="projects__title">Projetos</h2>
-
       <p class="projects__description">
         Gerencie e acompanhe todos os projetos da sua equipe.
       </p>
     </div>
+    <button class="projects__btn-primary" (click)="openModal()">+ Novo Projeto</button>
   </header>
+
+  <div class="projects__grid" style="margin-top: 24px;">
+    @for (project of dataService.projects(); track project.id) {
+      <article class="project-card">
+        <div class="project-card__header">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <span class="project-card__status" [class.project-card__status--active]="project.status === 'Em Andamento'">
+            {{ project.status }}
+          </span>
+        </div>
+        <p class="project-card__description">
+          {{ project.description }}
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__client-id">Cliente ID: {{ project.clientId }}</span>
+        </div>
+      </article>
+    } @empty {
+      <p class="projects__empty">Nenhum projeto cadastrado no momento.</p>
+    }
+  </div>
+
+  <!-- Modal de Novo Projeto -->
+  @if (isModalOpen()) {
+    <div class="project-modal-overlay" (click)="closeModal()">
+      <div class="project-modal" (click)="$event.stopPropagation()">
+        <header class="project-modal__header">
+          <h3 class="project-modal__title">Cadastrar Novo Projeto</h3>
+          <button class="project-modal__close" (click)="closeModal()">&times;</button>
+        </header>
+
+        <div class="project-modal__body">
+          <div class="project-modal__field">
+            <label>Título do Projeto</label>
+            <input type="text" [(ngModel)]="newTitle" placeholder="Ex: Portal de Vendas" class="project-modal__input" />
+          </div>
+
+          <div class="project-modal__field">
+            <label>Descrição</label>
+            <textarea [(ngModel)]="newDescription" placeholder="Breve descrição do escopo..." class="project-modal__textarea" rows="3"></textarea>
+          </div>
+
+          <div class="project-modal__field-row">
+            <div class="project-modal__field">
+              <label>Cliente ID</label>
+              <input type="text" [(ngModel)]="newClientId" class="project-modal__input" />
+            </div>
+
+            <div class="project-modal__field">
+              <label>Status</label>
+              <select [(ngModel)]="newStatus" class="project-modal__select">
+                <option value="Planejamento">Planejamento</option>
+                <option value="Em Andamento">Em Andamento</option>
+                <option value="Concluído">Concluído</option>
+                <option value="Cancelado">Cancelado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="project-modal__field">
+            <label>Data de Entrega</label>
+            <input type="date" [(ngModel)]="newDueDate" class="project-modal__input" />
+          </div>
+        </div>
+
+        <footer class="project-modal__footer">
+          <button class="project-modal__btn-cancel" (click)="closeModal()">Cancelar</button>
+          <button class="project-modal__btn-save" (click)="createProject()">Salvar Projeto</button>
+        </footer>
+      </div>
+    </div>
+  }
 </section>

@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DataService } from '../../services/data.service';
 
 @Component({
-  imports: [],
   selector: 'app-clients',
-  styleUrl: './clients.scss',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './clients.html',
+  styleUrl: './clients.scss',
 })
-export class Clients {}
+export class Clients {
+  protected readonly dataService = inject(DataService);
+}

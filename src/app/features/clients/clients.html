@@ -1,11 +1,42 @@
 <section class="clients">
   <header class="clients__header">
     <div>
-      <h2 class="clients__title">Clientes</h2>
-
+      <h2 class="clients__title">Gestão de Clientes (CRM)</h2>
       <p class="clients__description">
-        Gerencie os clientes e acompanhe os projetos vinculados a cada conta.
+        Acompanhe e gerencie as contas e parceiros cadastrados.
       </p>
     </div>
   </header>
+
+  <div class="clients__content">
+    <div class="clients__table-wrapper">
+      <table class="clients__table">
+        <thead>
+          <tr>
+            <th>Nome / Empresa</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (client of dataService.clients(); track client.id) {
+            <tr>
+              <td>
+                <strong class="clients__name">{{ client.name }}</strong>
+                <span class="clients__company">{{ client.company }}</span>
+              </td>
+              <td class="clients__email">{{ client.email }}</td>
+              <td class="clients__phone">{{ client.phone }}</td>
+              <td>
+                <span class="clients__status" [class.clients__status--active]="client.status === 'Ativo'" [class.clients__status--prospect]="client.status !== 'Ativo'">
+                  {{ client.status }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

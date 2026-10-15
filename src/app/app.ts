@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
+  styleUrl: './app.scss'
 })
-export class App {}
+export class App {
+  dataService = inject(DataService);
+}

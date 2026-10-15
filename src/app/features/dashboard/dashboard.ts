@@ -9,6 +9,7 @@ import {
 } from '@lucide/angular';
 
 import { DashboardService } from './services/dashboard';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,7 @@ import { DashboardService } from './services/dashboard';
 })
 export class Dashboard {
   private readonly dashboardService = inject(DashboardService);
+  protected readonly dataService = inject(DataService);
 
   readonly metrics$ = this.dashboardService.getMetrics();
   readonly deadlines$ = this.dashboardService.getDeadlines();

@@ -6,4 +6,5 @@ export interface Task {
   status: 'Pendente' | 'Em Progresso' | 'Concluída';
   priority: 'Baixa' | 'Média' | 'Alta';
   dueDate: Date;
+  notes?: string[];
 }
